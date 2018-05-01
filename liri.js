@@ -1,11 +1,14 @@
 console.log("the bot is starting")
 // require method
 var dotEnv = require ("dotEnv").config();
-console.log(dotEnv);
+
+var spotify = new Spotify(keys.spotify);
+
+var client = new Twitter(keys.twitter);
 
 var twit = require("twit")
 
-var config = require("config")
+var config = require("keys")
 
 
 

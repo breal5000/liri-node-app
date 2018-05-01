@@ -8,7 +8,7 @@ exports.twitter = {
 };
 
 exports.spotify = {
-  id: 6afa64668e0741a69d597a15bd6109eb
+  id: '6afa64668e0741a69d597a15bd6109eb'
   ,
-  secret: 9bf2e7118c9f45db85653caadcdd2e49
+  secret: '9bf2e7118c9f45db85653caadcdd2e49'
 };
