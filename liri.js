@@ -1,6 +1,6 @@
 console.log("the bot is starting")
 
-//require("dotenv").config();
+require("dotenv").config();
 
 var Twitter = require("twitter");
 
@@ -10,14 +10,10 @@ var keys = require("./keys");
 
 var request = require("request");
 
-var fs = require("fs");
 
 var spotify = new Spotify(keys.spotify);
-// FUNCTION
 
-var getArtistNames = function(artist) {
-  return artist.name;
-};
+// Twitter function
  
 var client = new Twitter({
   consumer_key: 'jroTXU1dgClobCfpETmcasKDq',
@@ -46,13 +42,12 @@ var getMyTweets = function() {
   });
 }; 
 
-// FUNCTIONS
-
+//Spotify function 
 var getArtistNames = function(artist) {
   return artist.name;
 };
-// Function for running a Spotify search
-var getMeSpotify = function(songName) {
+
+var goToSpotify = function(songName) {
   if (songName === undefined) {
     songName = "What's my age again";
   }
@@ -79,7 +74,7 @@ var getMeSpotify = function(songName) {
   );
 };
 // Function for running a Movie Search
-var getMeMovie = function(movieName) {
+var goToMovie = function(movieName) {
   if (movieName === undefined) {
     movieName = "Commando";
   }
@@ -103,7 +98,7 @@ var getMeMovie = function(movieName) {
   });
 };
 // Function for running a command based on text file
-var doWhatItSays = function() {
+var asInstructed = function() {
   fs.readFile("random.txt", "utf8", function(error, data) {
     console.log(data);
     var dataArr = data.split(",");
@@ -114,20 +109,20 @@ var doWhatItSays = function() {
     }
   });
 };
-// Function to determine which one 
+// Function to determine which one gets used, brother in-law gave me a hand on this for me buying him lunch
 var pick = function(caseData, functionData) {
   switch (caseData) {
     case "my-tweets":
       getMyTweets();
       break;
     case "spotify-this-song":
-      getMeSpotify(functionData);
+      goToSpotify(functionData);
       break;
     case "movie-this":
-      getMeMovie(functionData);
+      goToMovie(functionData);
       break;
     case "do-what-it-says":
-      doWhatItSays();
+      asInstructed();
       break;
     default:
       console.log("LIRI doesn't know that");
