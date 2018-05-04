@@ -15,17 +15,17 @@ var spotify = new Spotify(keys.spotify);
 
 // Twitter function
  
-var client = new Twitter({
-  consumer_key: 'jroTXU1dgClobCfpETmcasKDq',
-  consumer_secret: 'WspEMxmYddcTS7riGeeOcqXpRSK7qKAOs3Ux6DcW9nIRdatuSG',
-  access_token_key: '991150617845415941-6zGGELNCsctVS9HOKEnpvPc1hBuH9rb',
-  access_token_secret: 'xtBFzFXatJ99rybbaI6JjXTdmfizoGzmPnoS2E3uPUCuz'
-});
+var client = new Twitter(keys.twitter
+  //consumer_key: 'jroTXU1dgClobCfpETmcasKDq',
+  //consumer_secret: 'WspEMxmYddcTS7riGeeOcqXpRSK7qKAOs3Ux6DcW9nIRdatuSG',
+  //access_token_key: '991150617845415941-6zGGELNCsctVS9HOKEnpvPc1hBuH9rb',
+  //access_token_secret: 'xtBFzFXatJ99rybbaI6JjXTdmfizoGzmPnoS2E3uPUCuz'
+);
 
 var getMyTweets = function() {
-  var client = new Twitter(keys.twitter);
+  //var client = new Twitter(keys.twitter);
   var params = {
-    screen_name: "Brandon Frazier"
+    screen_name: "Brandon Frazier", count: 21
   };
   client.get("statuses/user_timeline", params, function(
     error,
@@ -98,18 +98,8 @@ var goToMovie = function(movieName) {
   });
 };
 // Function for running a command based on text file
-var asInstructed = function() {
-  fs.readFile("random.txt", "utf8", function(error, data) {
-    console.log(data);
-    var dataArr = data.split(",");
-    if (dataArr.length === 2) {
-      pick(dataArr[0], dataArr[1]);
-    } else if (dataArr.length === 1) {
-      pick(dataArr[0]);
-    }
-  });
-};
-// Function to determine which one gets used, brother in-law gave me a hand on this for me buying him lunch
+
+// Function to determine which one gets used
 var pick = function(caseData, functionData) {
   switch (caseData) {
     case "my-tweets":
